@@ -23,10 +23,10 @@ class Atm
     while (command = gets.chomp.upcase) != QUIT
       case command
         when DEPOSIT
-          printf "Input the amount you want to deposit: "
+          puts "Input the amount you want to deposit: "
           amount = get_input_amount
           if amount <= 0
-            printf "Input only positive numbers please.\n"
+            puts "Input only positive numbers please."
           else
             modify_balance(amount)
           end
@@ -34,7 +34,7 @@ class Atm
           printf "Input the amount you want to withdraw: "
           amount = get_input_amount
           if amount <= 0
-            printf "Input only positive numbers please.\n"
+            puts "Input only positive numbers please.\n"
           else
             modify_balance(-amount)
           end
@@ -62,7 +62,7 @@ class Atm
   def modify_balance(amount = 0)
     balance = get_balance
     if balance + amount < 0
-      printf "You cannot be in red numbers my friend\n"
+      puts "You cannot be in red numbers my friend."
     else
       file = File.open(@filename, 'w')
       file.write(balance + amount)
